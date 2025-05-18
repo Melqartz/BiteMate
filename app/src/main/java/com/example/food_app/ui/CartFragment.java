@@ -232,24 +232,22 @@ public class CartFragment extends Fragment implements CartAdapter.CartAdapterLis
             e.printStackTrace();
         }
 
-
-
         gps = new GPSTracker(requireContext());
 
-        // check if GPS enabled
+// Default fallback to Beirut
+        latitude = 33.888630;
+        longitude = 35.495480;
+
+// check if GPS enabled and permission granted
         if (gps.canGetLocation()) {
+            double gpsLat = gps.getLatitude();
+            double gpsLng = gps.getLongitude();
 
-            latitude = gps.getLatitude();
-            longitude = gps.getLongitude();
-
-        } else {
-            //location of beirut
-            latitude = 33.888630;
-            longitude = 35.495480;
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gps.showSettingsAlert();
+            // only update if valid GPS values received
+            if (gpsLat != 0.0 && gpsLng != 0.0) {
+                latitude = gpsLat;
+                longitude = gpsLng;
+            }
         }
 
         mapView = rootView.findViewById(R.id.mapView2);
@@ -259,6 +257,10 @@ public class CartFragment extends Fragment implements CartAdapter.CartAdapterLis
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
+                if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    googleMap.setMyLocationEnabled(true);
+                }
+
                 // Set the map type to hybrid
                 googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 

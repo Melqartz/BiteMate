@@ -123,18 +123,24 @@ public class HomeFragment extends Fragment {
             if(glob.isUserSignedIn){
                 Fragment=new RewardsFragment();
             }else{
+                LoginFragment bottomSheetDialog = new LoginFragment();
+                bottomSheetDialog.show(getParentFragmentManager(), "exampleBottomSheet");
                 Toast.makeText(requireContext(), "Please Sign in to Order", Toast.LENGTH_SHORT).show();
             }
         }else if(frag.equals("orderCard")){
             if(glob.isUserSignedIn){
                 Fragment=new HistoryFragment();
             }else{
+                LoginFragment bottomSheetDialog = new LoginFragment();
+                bottomSheetDialog.show(getParentFragmentManager(), "exampleBottomSheet");
                 Toast.makeText(requireContext(), "Please Sign in to Order", Toast.LENGTH_SHORT).show();
             }
         }else if(frag.equals("accountCard")){
             if(glob.isUserSignedIn){
                 Fragment=new AccountFragment();
             }else{
+                LoginFragment bottomSheetDialog = new LoginFragment();
+                bottomSheetDialog.show(getParentFragmentManager(), "exampleBottomSheet");
                 Toast.makeText(requireContext(), "Please Sign in to Order", Toast.LENGTH_SHORT).show();
             }
         }

@@ -2,6 +2,7 @@ package com.example.food_app;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,21 +56,21 @@ public class RewardsFragment extends Fragment {
         redeemBurgerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redeemReward("American Burger (Reward)", 100);
+                redeemReward("Classic Cheeseburger", 100);
             }
         });
 
         redeemFriesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redeemReward("French Fries (Reward)", 50);
+                redeemReward("French Fries", 50);
             }
         });
 
         redeemDrinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redeemReward("Pepsi (Reward)", 30);
+                redeemReward("Pepsi", 30);
             }
         });
 
@@ -77,12 +78,23 @@ public class RewardsFragment extends Fragment {
     }
 
     private void loadUserPoints() {
+        // log userRef
+        System.out.println("UserRef: " + userRef);
+
         userRef.child("points").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     userPoints = dataSnapshot.getValue(Integer.class);
                     pointsTextView.setText(String.valueOf(userPoints));
+                } else {
+                    // create a new user with 0 points
+                    userRef.child("points").setValue(0);
+                    userPoints = 0;
+                    pointsTextView.setText(String.valueOf(userPoints));
+                    Log.d("RewardsFragment", "User points created");
+                    dbHelper.insertCartItem(glob.currentUserId, "New User", 0);
+                    Toast.makeText(getActivity(), "New User", Toast.LENGTH_SHORT).show();
                 }
             }
 

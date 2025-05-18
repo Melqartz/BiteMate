@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -22,11 +23,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     private DatabaseHelper dbHelper;
     private GlobalVariable glob= new GlobalVariable();
 
+    private FragmentManager fragmentManager; // or Fragment fragment
 
-    public FoodAdapter(Context context, List<Food> foods, DatabaseHelper dbHelper) {
+    public FoodAdapter(Context context, List<Food> foods, DatabaseHelper dbHelper, FragmentManager fragmentManager) {
         mContext = context;
         mFoods = foods;
         this.dbHelper = dbHelper;
+        this.fragmentManager = fragmentManager;
     }
 
 
@@ -56,6 +59,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 if(!glob.isUserSignedIn){
+                    LoginFragment bottomSheetDialog = new LoginFragment();
+                    bottomSheetDialog.show(fragmentManager, "exampleBottomSheet");
                     Toast.makeText(mContext, "Please Sign in first!", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(mContext, "Added " + food.name + " to cart", Toast.LENGTH_SHORT).show();
