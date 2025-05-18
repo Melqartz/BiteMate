@@ -86,7 +86,7 @@ public class FoodFragment extends Fragment {
                     }
                 }
                 //adapter = new FoodAdapter(getActivity(), foods, dbHelper);
-                adapter = new FoodAdapter(getActivity(), foods,dbHelper);
+                adapter = new FoodAdapter(getActivity(), foods,dbHelper, getChildFragmentManager());
                 recyclerView.setAdapter(adapter);
             }
 

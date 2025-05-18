@@ -1,266 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
-    android:id="@+id/scroll_view"
-    android:fillViewport="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#eef4ed">
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#fdfcfb"
+    >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <!-- Delivery / Pickup Selection -->
         <RadioGroup
             android:id="@+id/radioButtonGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:orientation="horizontal"
-            android:paddingBottom="10dp">
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
 
             <RadioButton
                 android:id="@+id/radioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="30px"
                 android:buttonTint="@color/black"
                 android:text="Delivery"
                 android:textColor="@color/black"
-                android:textSize="25sp"
-                android:checked="true"
-                tools:ignore="TouchTargetSizeCheck" />
-
+                android:textSize="18sp"
+                android:checked="true" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:buttonTint="#DFDCD7"
-                android:clickable="false"
-                android:focusable="false"
                 android:text="Pickup"
                 android:textColor="#DFDCD7"
-                android:textSize="25sp"
-                tools:ignore="TouchTargetSizeCheck" />
-
+                android:textSize="18sp"
+                android:layout_marginStart="32dp"
+                android:clickable="false"
+                android:focusable="false" />
         </RadioGroup>
 
+        <!-- Map -->
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView2"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_below="@id/radioButtonGroup"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_marginBottom="16dp" />
 
+        <!-- Location Info -->
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mapView2"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Your Location :"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            style="@style/LabelStyle"
+            android:text="Your Location :" />
 
         <TextView
             android:id="@+id/locationTextCoord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="0dp"
             android:text="empty"
             android:textColor="#F80404"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+        <!-- Address Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/locationTextCoord"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:text="Enter your address:"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="16dp"
+            android:padding="16dp"
+            android:backgroundTint="#ffffff">
 
-        <TextView
-            android:id="@+id/cityLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView3"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="City *:"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/cityEditText"
-            android:layout_width="362dp"
-            android:layout_height="40dp"
-            android:layout_below="@id/cityLabel"
-            android:layout_marginLeft="10dp"
-            android:backgroundTint="#000000"
-            android:textColor="#000000"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                <TextView style="@style/LabelStyle" android:text="Enter your address:" />
 
-        <TextView
-            android:id="@+id/buildingLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cityEditText"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Building *:"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+                <TextView style="@style/LabelStyle" android:text="City *:" />
+                <EditText android:id="@+id/cityEditText" android:hint="Enter your city" style="@style/FieldStyle" />
 
-        <EditText
-            android:id="@+id/buildingEditText"
-            android:layout_width="362dp"
-            android:layout_height="40dp"
-            android:layout_below="@id/buildingLabel"
-            android:layout_marginLeft="10dp"
-            android:backgroundTint="#000000"
-            android:textColor="#000000"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                <TextView style="@style/LabelStyle" android:text="Building *:" />
+                <EditText android:id="@+id/buildingEditText" android:hint="Enter your building" style="@style/FieldStyle" />
 
-        <TextView
-            android:id="@+id/streetLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/buildingEditText"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Street *:"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+                <TextView style="@style/LabelStyle" android:text="Street *:" />
+                <EditText android:id="@+id/streetEditText" android:hint="Enter your street" style="@style/FieldStyle" />
 
-        <EditText
-            android:id="@+id/streetEditText"
-            android:layout_width="362dp"
-            android:layout_height="40dp"
-            android:layout_below="@id/streetLabel"
-            android:layout_marginLeft="10dp"
-            android:backgroundTint="#000000"
-            android:textColor="#000000"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                <TextView style="@style/LabelStyle" android:text="Floor *:" />
+                <EditText android:id="@+id/floorEditText" android:hint="Enter your floor" style="@style/FieldStyle" />
 
-        <TextView
-            android:id="@+id/floorLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/streetEditText"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Floor *:"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+                <TextView style="@style/LabelStyle" android:text="Additional Details:" />
+                <EditText
+                    android:id="@+id/detailsEditText" android:hint="Enter additional details" style="@style/FieldStyle"  />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <EditText
-            android:id="@+id/floorEditText"
-            android:layout_width="362dp"
-            android:layout_height="40dp"
-            android:layout_below="@id/floorLabel"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="0dp"
-            android:backgroundTint="#000000"
-            android:textColor="#000000"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-        <TextView
-            android:id="@+id/detailsLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/floorEditText"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Additional Details:"
-            android:textColor="#000000"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/detailsEditText"
-            android:layout_width="362dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/detailsLabel"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="00dp"
-            android:backgroundTint="#000000"
-            android:textColor="#000000"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-
+        <!-- Shopping Cart -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shoppingcart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/detailsEditText"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="24dp" />
 
+        <!-- Payment Method -->
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/shoppingcart"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:text="Payment : Cash On Delivery"
             android:textColor="#FD0000"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+        <!-- Total -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView5"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"
-            android:text="Total:"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginBottom="24dp">
 
-        <TextView
-            android:id="@+id/totalPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView5"
-            android:layout_marginLeft="90dp"
-            android:layout_marginTop="25dp"
-            android:text=""
-            android:textColor="@color/black"
-            android:textSize="25sp"
-             />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total:"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/totalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$0.00"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+        <!-- Confirm Button -->
         <Button
             android:id="@+id/btn_ConfirmOder"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView4"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@color/black"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="Confirm order"
+            android:text="Confirm Order"
+            android:textColor="#ffffff"
             android:textSize="18sp"
-            tools:ignore="TextContrastCheck" />
-
-
-    </RelativeLayout>
+            android:backgroundTint="@color/black"
+            android:padding="14dp" />
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>

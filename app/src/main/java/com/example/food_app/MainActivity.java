@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             .addToBackStack("name") // name can be null
                             .commit();
                 } else {
+                    LoginFragment bottomSheetDialog = new LoginFragment();
+                    bottomSheetDialog.show(getSupportFragmentManager(), "exampleBottomSheet");
                     Toast.makeText(MainActivity.this, "Please Sign in to Order", Toast.LENGTH_SHORT).show();
                 }
             }
