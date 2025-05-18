@@ -1,5 +1,7 @@
 package com.example.food_app;
 
+import static com.example.food_app.GlobalVariable.baseUrl;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,6 +22,16 @@ import androidx.fragment.app.FragmentManager;
 import com.example.food_app.ui.AccountFragment;
 import com.example.food_app.ui.CartFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageView shoppingCart;
     GlobalVariable glob;
     SharedPreferences sharedPreferences;
+    private final OkHttpClient client = new OkHttpClient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_menu:
+                sendSecureApiRequest();
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView2, MenuFragment.class, null)
                         .setReorderingAllowed(true)
@@ -200,6 +214,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void sendSecureApiRequest() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        user.getIdToken(true).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                String idToken = task.getResult().getToken();
+
+                Request request = new Request.Builder()
+                        .url(baseUrl + "/api/admin/secure")
+                        .addHeader("Authorization", "Bearer " + idToken)
+                        .build();
+
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                        runOnUiThread(() -> Toast.makeText(MainActivity.this, "API failed", Toast.LENGTH_SHORT).show());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        final String responseData = response.body().string();
+                        runOnUiThread(() -> {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "✅ Success: " + responseData, Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(MainActivity.this, "❌ Error: " + response.code(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+            } else {
+                Toast.makeText(this, "Failed to get Firebase token", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

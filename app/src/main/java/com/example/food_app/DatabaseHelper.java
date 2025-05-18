@@ -75,10 +75,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cartItems;
     }
 
-
-
-
-
     public void insertCartItem(String userId, String itemName, double itemPrice) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -159,6 +155,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public void incrementItemQuantity(int itemId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE " + TABLE_CART + " SET " + COLUMN_ITEM_QUANTITY + " = " + COLUMN_ITEM_QUANTITY + " + 1 WHERE " + COLUMN_ID + " = ?", new String[]{String.valueOf(itemId)});
+        db.close();
+    }
 
+    public void decrementItemQuantity(int itemId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_ITEM_QUANTITY + " FROM " + TABLE_CART + " WHERE " + COLUMN_ID + " = ?", new String[]{String.valueOf(itemId)});
+        if (cursor.moveToFirst()) {
+            int currentQuantity = cursor.getInt(0);
+            if (currentQuantity > 1) {
+                db.execSQL("UPDATE " + TABLE_CART + " SET " + COLUMN_ITEM_QUANTITY + " = " + COLUMN_ITEM_QUANTITY + " - 1 WHERE " + COLUMN_ID + " = ?", new String[]{String.valueOf(itemId)});
+            } else {
+                // If quantity would drop to 0, delete the item
+                deleteCartItem(itemId);
+            }
+        }
+        cursor.close();
+        db.close();
+    }
 }
 

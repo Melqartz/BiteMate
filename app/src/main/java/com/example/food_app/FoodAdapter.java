@@ -22,6 +22,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     private DatabaseHelper dbHelper;
     private GlobalVariable glob= new GlobalVariable();
 
+
     public FoodAdapter(Context context, List<Food> foods, DatabaseHelper dbHelper) {
         mContext = context;
         mFoods = foods;
@@ -41,8 +42,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         Food food = mFoods.get(position);
         holder.nameTextView.setText(food.name);
         holder.priceTextView.setText(String.format("$%.2f", food.price));
-//        Picasso.get().load(food.imageUrl).into(holder.imageView);
-//        get image path from storage (image url is like img.jpg) and load it from drawable
         String imageName = food.imageUrl.replace(".jpg", "").replace(".png", "").replace(".jpeg", "");
 
         int resId = mContext.getResources().getIdentifier(imageName, "drawable", mContext.getPackageName());
