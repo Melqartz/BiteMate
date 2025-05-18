@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "353538084358",
+    "project_id": "bitemate-c316c",
+    "storage_bucket": "bitemate-c316c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353538084358:android:15d05323cc65cd9b43bd87",
+        "android_client_info": {
+          "package_name": "com.example.food_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsVlIa6KFW1aZH9dPN8BJHDRU2hfsSY-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

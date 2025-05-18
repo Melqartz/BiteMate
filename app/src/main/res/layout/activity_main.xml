@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/teal_background"
+    tools:context=".MainActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white">
+
+        <!-- Main Content Area -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Toolbar -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/black"
+                android:elevation="6dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Layout for Toolbar Content -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="16dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Menu Icon -->
+                    <ImageView
+                        android:id="@+id/menuIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:padding="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/baseline_menu_24"
+                        android:tint="@color/white"
+                        android:contentDescription="Menu" />
+
+                    <!-- Logo -->
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="140dp"
+                        android:layout_height="70dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/logo"
+                        android:contentDescription="Logo" />
+
+                    <!-- Cart Icon -->
+                    <FrameLayout
+                        android:id="@+id/cartContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true">
+
+                        <ImageView
+                            android:id="@+id/shoppingCart"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@drawable/baseline_shopping_bag_24"
+                            android:tint="@color/white"
+                            android:contentDescription="Cart" />
+
+                        <TextView
+                            android:id="@+id/cartBadge"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="end|top"
+                            android:background="@drawable/badge_background"
+                            android:textColor="@android:color/white"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:text="0" />
+                    </FrameLayout>
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <!-- Content Fragment Area -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView2"
+                android:name="com.example.food_app.HomeFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout="@layout/fragment_home" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Navigation Drawer -->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/header_menu"
+            app:menu="@menu/main_menu"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="@color/black"
+            app:itemRippleColor="@color/teal_ripple" />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

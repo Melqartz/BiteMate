@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Order ID -->
+    <TextView
+        android:id="@+id/text_order_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
+        android:text="Order ID: ABC123" />
+
+    <!-- Order Date -->
+    <TextView
+        android:id="@+id/text_order_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginBottom="8dp"
+        android:text="Order Date: May 15, 2023" />
+
+    <!-- Address -->
+    <TextView
+        android:id="@+id/text_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
+        android:text="Address: Building 123, Street ABC, City XYZ" />
+
+    <!-- Total Price -->
+    <TextView
+        android:id="@+id/text_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp"
+        android:text="Total Price: $50.00" />
+
+
+    <!-- Order Items -->
+    <TextView
+        android:id="@+id/text_order_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
+        android:text="Order Items" />
+
+
+    <!-- RecyclerView to display order items
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_order_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+    -->
+    <!-- Divider Line -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="16dp" />
+
+</LinearLayout>

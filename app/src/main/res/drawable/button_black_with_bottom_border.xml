@@ -1,0 +1,24 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:attr/colorControlHighlight">
+
+    <item>
+        <layer-list>
+
+            <!-- Background layer: full black -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@android:color/black" />
+                </shape>
+            </item>
+
+            <!-- Bottom border (1dp height) -->
+            <item android:top="-1dp">
+                <shape android:shape="rectangle">
+                    <size android:height="1dp" />
+                    <solid android:color="#DDDDDD" />
+                </shape>
+            </item>
+
+        </layer-list>
+    </item>
+</ripple>

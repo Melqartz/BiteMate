@@ -1,0 +1,94 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Category Buttons Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ripple_light"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="6dp"
+            android:weightSum="4">
+
+            <Button
+                android:id="@+id/btnBurger"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/btn_selected"
+                android:drawableTop="@drawable/ic_burger"
+                android:text="Burgers"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:drawablePadding="4dp"
+                android:elevation="2dp"
+                android:focusable="true"
+                android:clickable="true"/>
+
+            <Button
+                android:id="@+id/btnDrinks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/btn_selected"
+                android:drawableTop="@drawable/drink_men"
+                android:text="Drinks"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:drawablePadding="4dp"
+                android:elevation="2dp"     android:focusable="true"
+                android:clickable="true"/>
+
+            <Button
+                android:id="@+id/btnSides"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/btn_selected"
+                android:drawableTop="@drawable/ic_fries"
+                android:text="Sides"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:drawablePadding="4dp"
+                android:elevation="2dp"    android:focusable="true"
+                android:clickable="true" />
+
+            <Button
+                android:id="@+id/btnOffers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_selected"
+                android:drawableTop="@drawable/bugermen"
+                android:text="Offers"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:drawablePadding="4dp"
+                android:elevation="2dp"     android:focusable="true"
+                android:clickable="true"/>
+        </LinearLayout>
+
+        <!-- Fragment Container -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            tools:layout="@layout/fragment_food" />
+    </LinearLayout>
+</FrameLayout>

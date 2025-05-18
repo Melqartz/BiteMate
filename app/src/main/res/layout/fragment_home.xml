@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_background"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Image Slider -->
+        <RelativeLayout
+            android:id="@+id/Relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="24dp">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/indicatorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" />
+        </RelativeLayout>
+
+        <!-- Button List -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menuCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Menu"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:icon="@drawable/ic_menu"
+            app:iconPadding="12dp"
+            android:iconTint="@android:color/white"
+            android:background="@drawable/button_black_with_bottom_border"
+            app:iconGravity="textStart"
+            app:cornerRadius="0dp"
+            app:elevation="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rewardsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Rewards"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:icon="@drawable/ic_rewards"
+            app:iconPadding="12dp"
+            android:iconTint="@android:color/white"
+            android:background="@drawable/button_black_with_bottom_border"
+            app:iconGravity="textStart"
+            app:cornerRadius="0dp"
+            app:elevation="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/orderCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Orders"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:icon="@drawable/ic_orders"
+            app:iconPadding="12dp"
+            android:iconTint="@android:color/white"
+            android:background="@drawable/button_black_with_bottom_border"
+            app:iconGravity="textStart"
+            app:cornerRadius="0dp"
+            app:elevation="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/accountCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:icon="@drawable/ic_account"
+            app:iconPadding="12dp"
+            android:iconTint="@android:color/white"
+            android:background="@drawable/button_black_with_bottom_border"
+            app:iconGravity="textStart"
+            app:cornerRadius="0dp"
+            app:elevation="0dp" />
+    </LinearLayout>
+</ScrollView>

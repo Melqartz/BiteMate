@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".ui.AccountFragment"
+    android:background="@color/ripple_light">
+
+        <Button
+            android:id="@+id/btnChangeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/black"
+            android:text="Change Profile"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/btnChangeEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/black"
+            android:text="Change Email"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/black"
+            android:text="Change Password"
+            tools:ignore="TextContrastCheck" />
+
+        <!-- activity_main.xml -->
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+
+            />
+
+
+</LinearLayout>
